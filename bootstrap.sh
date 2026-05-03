@@ -41,6 +41,7 @@ BREW_FORMULAS=(
   yt-dlp          # youtube downloader
   jq              # json filter — handy
   git             # in case we're on a really fresh machine
+  gh              # GitHub CLI — for repo create, PRs, etc.
   llvm            # clang, clang-format, clangd (used by nvim's clangd LSP)
   node            # for many LSP servers + prettier + eslint_d
 )
