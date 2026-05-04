@@ -36,7 +36,8 @@
 # After setup the dock_did_restart signal below auto-injects on every login —
 # no manual work, no password prompts.
 #
-# After `brew upgrade yabai`: binary hash changes, so re-do steps 3 + 4.
+# After `brew upgrade yabai`: just run `~/Dotfiles/yabai/post-upgrade.sh` — it
+# refreshes the sudoers hash, re-patches the loader, and re-injects in one go.
 # Logs: /tmp/yabai_$USER.{out,err}.log
 # ─────────────────────────────────────────────────────────────────────────────
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa" 2>/dev/null || true
