@@ -253,9 +253,20 @@ to settle.
 
 ### Treesitter parsers
 
-Run `:TSUpdate` to update parsers (the per-language syntax modules). New
-parsers auto-install for filetypes in `ensure_installed` (in
-`plugins/treesitter.lua`).
+We use the **`main` branch** of nvim-treesitter (the master branch was
+archived/frozen in early 2026 and no longer keeps up with Neovim 0.12+).
+That means:
+
+- The plugin needs `tree-sitter-cli` from Homebrew (`brew install
+  tree-sitter-cli`) — bootstrap.sh handles this.
+- The plugin doesn't lazy-load (it's `lazy = false` in the spec).
+- Parsers install asynchronously to `~/.local/share/nvim/site/parser/` on
+  first launch — the very first nvim run will spend ~30s downloading and
+  compiling parsers. Subsequent launches are instant.
+- `:TSUpdate` updates all installed parsers; `:TSInstall <lang>` adds a new
+  language.
+- Highlighting/folds/indent are enabled per-buffer by a FileType autocmd in
+  `plugins/treesitter.lua` calling `vim.treesitter.start()`.
 
 ---
 
@@ -337,8 +348,9 @@ the autocmd's list in `lua/config/autocmds.lua`.
 | LSP didn't attach | `:LspInfo`, `:Mason` (server installed?), check filetype matches |
 | Format on save not running | `:ConformInfo` shows configured formatter; `<Space>tf` toggles |
 | Lint not running | `:lua print(vim.inspect(require("lint").linters_by_ft))` then check `:Mason` |
-| Treesitter parser missing | `:TSUpdate` or `:TSInstall <lang>` |
-| `nvim-treesitter.configs` not found | We pin `branch = "master"` — check your spec didn't drift |
+| Treesitter parser missing | `:TSUpdate` or `:TSInstall <lang>` (parsers compile in background; first launch is slow) |
+| `attempt to call method 'range' (a nil value)` | Old master-branch nvim-treesitter on Neovim 0.12+. We use `branch = "main"` — verify your spec |
+| `tree-sitter` ENOENT during install | Run `brew install tree-sitter-cli` (the **CLI**, not just the library) |
 | Telescope crashes | `:checkhealth telescope` — usually a missing `ripgrep`/`fd` |
 | Slow startup | `:Lazy profile` to see load times |
 | Colorscheme broken | `:colorscheme rose-pine` manually; check `termguicolors` is on |

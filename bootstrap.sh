@@ -44,6 +44,8 @@ BREW_FORMULAS=(
   gh              # GitHub CLI — for repo create, PRs, etc.
   llvm            # clang, clang-format, clangd (used by nvim's clangd LSP)
   node            # for many LSP servers + prettier + eslint_d
+  tree-sitter     # parsing library
+  tree-sitter-cli # CLI required by nvim-treesitter `main` branch for parser builds
 )
 
 log "Installing brew formulas…"
