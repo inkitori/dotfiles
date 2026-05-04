@@ -1,20 +1,16 @@
-# dark pink/mauve theme — plays nicely with TUI apps that assume a dark bg
-theme = Rose Pine
-
-# force an actually-pink canvas (overrides the theme's bg/fg)
-background = #a85e7a
-foreground = #fff0f4
-cursor-color = #ffb0c8
-selection-background = #c87898
-selection-foreground = #ffffff
+# Everforest Dark — mint green + salmon + cream on dark grey, very readable.
+# (Pink config preserved at ./config-pink — swap by copying it over this file.)
+theme = Everforest Dark Hard
 
 # get a Nerd Font so icons render — install via brew first
 font-family = JetBrainsMono Nerd Font
 font-size = 14
 
-# the glassy macOS look
-background-opacity = 0.90
-background-blur = macos-glass-regular
+# Solid background. Unlike the pink config, we're not overriding `background`,
+# so adding `background-blur` here would actually work — but for max
+# readability of code, keep it opaque. To get a glassy look, try:
+background-opacity = 0.92
+background-blur = true
 
 # breathing room
 window-padding-x = 16

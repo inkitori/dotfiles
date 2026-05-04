@@ -1,0 +1,35 @@
+# dark pink/mauve theme — plays nicely with TUI apps that assume a dark bg
+theme = Rose Pine
+
+# force an actually-pink canvas (overrides the theme's bg/fg)
+background = #a85e7a
+foreground = #fff0f4
+cursor-color = #ffb0c8
+selection-background = #c87898
+selection-foreground = #ffffff
+
+# get a Nerd Font so icons render — install via brew first
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+
+# Solid pink canvas. macOS's NSVisualEffectView ("glass") dominates the
+# rendering with its own vibrancy and ignores normal alpha-blending, so
+# pairing background-blur with a custom background color washes the pink
+# out entirely. Keep this opaque.
+#
+# To experiment with a glassy look later, try:
+background-opacity = 0.95
+#   background-blur = true     # numeric radius like `20` also works
+# but expect the system's vibrancy to mute the pink — the trade-off is real.
+
+# breathing room
+window-padding-x = 16
+window-padding-y = 12
+window-padding-balance = true
+
+# hide ghostty's tab bar — cmux has its own vertical tabs
+window-show-tab-bar = never
+
+# nice cursor
+cursor-style = block
+cursor-style-blink = false
