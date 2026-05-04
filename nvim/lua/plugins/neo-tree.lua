@@ -32,7 +32,7 @@ return {
     enable_diagnostics = true,
     filesystem = {
       follow_current_file = { enabled = true },
-      hijack_netrw_behavior = "open_current",
+      hijack_netrw_behavior = "open_default",
       filtered_items = {
         hide_dotfiles = false,
         hide_gitignored = true,

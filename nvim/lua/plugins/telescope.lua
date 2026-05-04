@@ -29,6 +29,10 @@ return {
       selection_caret = " ",
       path_display = { "truncate" },
       layout_config = { horizontal = { preview_width = 0.55 } },
+      -- nvim-treesitter `main` branch removed `parsers.ft_to_lang` and
+      -- `configs.is_enabled`, which Telescope's previewer still calls. Skip
+      -- the treesitter path; previews fall back to vim regex syntax.
+      preview = { treesitter = false },
       mappings = {
         i = {
           ["<C-u>"] = false,
