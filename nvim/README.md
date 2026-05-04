@@ -49,7 +49,7 @@ Leader is **Space**. The bare-minimum keys:
 | Toggle the file tree sidebar | `<Space>e` |
 | Save | `<Space>w` |
 | Close the current file ("tab") | `<Space>bd` |
-| **Quit Neovim entirely** | `:qa` (or `:qa!` to discard unsaved) |
+| **Quit Neovim entirely** | `<Space>q` (or `<Space>Q` to discard unsaved) |
 
 When unsure: press `<Space>` and pause — which-key shows every binding. Or `<Space>fk` to fuzzy-search them all.
 
@@ -65,10 +65,10 @@ The "tabs" at the top are **buffers** (loaded files), not Vim tabs. Three things
 
 So `:q` only closes the pane your cursor is in. If neo-tree or another split is still open, nvim stays running. To exit everything:
 
-| Command | Action |
+| Keys | Action |
 |---|---|
-| `:qa` | Quit all windows (exit nvim) |
-| `:qa!` | Quit all, discard unsaved changes |
+| `<Space>q` | Quit Neovim (all windows) |
+| `<Space>Q` | Quit Neovim, discard unsaved changes |
 | `:wqa` | Save all, then quit |
 | `<Space>bd` | Close just the current "tab" (buffer), keep nvim open |
 

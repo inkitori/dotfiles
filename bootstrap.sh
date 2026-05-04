@@ -46,6 +46,7 @@ BREW_FORMULAS=(
   node            # for many LSP servers + prettier + eslint_d
   tree-sitter     # parsing library
   tree-sitter-cli # CLI required by nvim-treesitter `main` branch for parser builds
+  imagemagick     # required by image.nvim for inline image rendering
 )
 
 log "Installing brew formulas…"

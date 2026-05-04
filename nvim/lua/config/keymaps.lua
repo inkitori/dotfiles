@@ -7,6 +7,11 @@ map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
+map("t", "<C-h>", [[<C-\><C-n><C-w>h]], { desc = "Window left (from terminal)" })
+map("t", "<C-j>", [[<C-\><C-n><C-w>j]], { desc = "Window down (from terminal)" })
+map("t", "<C-k>", [[<C-\><C-n><C-w>k]], { desc = "Window up (from terminal)" })
+map("t", "<C-l>", [[<C-\><C-n><C-w>l]], { desc = "Window right (from terminal)" })
+
 map("n", "<C-Up>",    "<cmd>resize +2<CR>",          { desc = "Resize up" })
 map("n", "<C-Down>",  "<cmd>resize -2<CR>",          { desc = "Resize down" })
 map("n", "<C-Left>",  "<cmd>vertical resize -2<CR>", { desc = "Resize left" })
@@ -21,8 +26,9 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 map("n", "n", "nzzzv", { desc = "Next match, centered" })
 map("n", "N", "Nzzzv", { desc = "Prev match, centered" })
 
-map("n", "<leader>w", "<cmd>w<CR>",  { desc = "Write" })
-map("n", "<leader>q", "<cmd>q<CR>",  { desc = "Quit" })
+map("n", "<leader>w", "<cmd>w<CR>",   { desc = "Write" })
+map("n", "<leader>q", "<cmd>qa<CR>",  { desc = "Quit Neovim (all windows)" })
+map("n", "<leader>Q", "<cmd>qa!<CR>", { desc = "Quit Neovim, discard unsaved" })
 
 map("n", "]d", function() vim.diagnostic.goto_next() end, { desc = "Next diagnostic" })
 map("n", "[d", function() vim.diagnostic.goto_prev() end, { desc = "Prev diagnostic" })

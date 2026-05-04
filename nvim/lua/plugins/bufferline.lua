@@ -7,7 +7,22 @@ return {
     { "<S-h>", "<cmd>BufferLineCyclePrev<CR>", desc = "Prev buffer" },
     { "<S-l>", "<cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },
     { "<leader>bp", "<cmd>BufferLineTogglePin<CR>", desc = "Pin buffer" },
-    { "<leader>bd", "<cmd>bdelete<CR>", desc = "Delete buffer" },
+    {
+      "<leader>bd",
+      function()
+        local bufnr = vim.api.nvim_get_current_buf()
+        local others = vim.tbl_filter(function(b)
+          return b ~= bufnr and vim.fn.buflisted(b) == 1
+        end, vim.api.nvim_list_bufs())
+        if #others > 0 then
+          vim.cmd("BufferLineCyclePrev")
+        else
+          vim.cmd("enew")
+        end
+        vim.cmd("bdelete " .. bufnr)
+      end,
+      desc = "Delete buffer (keep window)",
+    },
   },
   opts = {
     options = {
