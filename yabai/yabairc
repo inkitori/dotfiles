@@ -4,8 +4,8 @@
 #   - borders  (~/Dotfiles/borders/bordersrc)  pink border around focused window
 #   - colors   (~/.config/colors.sh)           shared palette sourced below
 #
-# This config sets up bsp tiling, six labeled spaces (one per pinned app —
-# Firefox, Discord, cmux, Spotify, VS Code, Slack), gentle animations,
+# This config sets up bsp tiling, seven labeled spaces (one per pinned app —
+# Firefox, Discord, cmux, Spotify, VS Code, Slack, Claude), gentle animations,
 # inactive-window fade, and a mouse-drag-to-swap gesture. Apple-protected
 # windows (System Settings, Finder, …) are forced to float.
 #
@@ -76,11 +76,11 @@ yabai -m config                                 \
 yabai -m rule --add app="^(System Settings|System Information|Activity Monitor|FaceTime|Screen Sharing|Calculator|Stickies|TinkerTool|Progressive Downloader|Transmission|Airflow|Raycast|Karabiner-Elements|LinearMouse|Finder|Webull Desktop|App Store|Software Update)$" manage=off
 yabai -m rule --add title="(Preferences|Settings|Welcome)$" manage=off
 
-# ── spaces — ensure 6 exist, then label each one ─────────────────────────────
-# `space --create` requires SA. Idempotent: skips if you already have ≥ 6.
+# ── spaces — ensure 7 exist, then label each one ─────────────────────────────
+# `space --create` requires SA. Idempotent: skips if you already have ≥ 7.
 # Without this, focusing a missing label (e.g. alt-a slack) silently no-ops,
 # and rules can't move windows to nonexistent target spaces.
-NEEDED_SPACES=6
+NEEDED_SPACES=7
 HAVE_SPACES=$(yabai -m query --spaces | jq 'length')
 while [ "$HAVE_SPACES" -lt "$NEEDED_SPACES" ]; do
     yabai -m space --create
@@ -94,6 +94,7 @@ yabai -m space 3 --label cmux    2>/dev/null
 yabai -m space 4 --label spotify 2>/dev/null
 yabai -m space 5 --label code    2>/dev/null
 yabai -m space 6 --label slack   2>/dev/null
+yabai -m space 7 --label claude  2>/dev/null
 
 # ── app → space pinning (SA required to actually move windows) ───────────────
 yabai -m rule --add app="^Firefox$"  space=firefox
@@ -102,6 +103,12 @@ yabai -m rule --add app="^cmux$"     space=cmux
 yabai -m rule --add app="^Spotify$"  space=spotify
 yabai -m rule --add app="^Code$"     space=code
 yabai -m rule --add app="^Slack$"    space=slack
+yabai -m rule --add app="^Claude$"   space=claude
+
+# ── auto-launch pinned apps that should always be running ────────────────────
+# Hidden launch (-gj) so it doesn't steal focus during yabai startup; the rule
+# above moves the window to the claude space as soon as it's created.
+pgrep -xq Claude || open -gja Claude
 
 # ── signals ──────────────────────────────────────────────────────────────────
 # Ghostty occasionally lands a window before yabai sees it, leaving the space

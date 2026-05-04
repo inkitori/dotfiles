@@ -33,11 +33,12 @@
 #   alt - s                   focus spotify space
 #   alt - c                   focus code space         (C = VS Code)
 #   alt - a                   focus slack space
+#   alt - i                   focus claude space       (I = AI)
 #   ctrl + alt - left/right   focus prev / next space
 #
 # Spaces — send focused window (and follow)
-#   alt + shift - 1 .. 0              by number
-#   ctrl + alt + shift - f/d/t/s/c/a  by label (same letters as focus)
+#   alt + shift - 1 .. 0                by number
+#   ctrl + alt + shift - f/d/t/s/c/a/i  by label (same letters as focus)
 #
 # Space layout
 #   alt + shift - s           toggle bsp ↔ stack
@@ -128,13 +129,14 @@ alt - 8 : yabai -m space --focus 8
 alt - 9 : yabai -m space --focus 9
 alt - 0 : yabai -m space --focus 10
 
-# spaces — focus by label (mirrors yabairc's space 1..6 labels)
+# spaces — focus by label (mirrors yabairc's space 1..7 labels)
 alt - f : yabai -m space --focus firefox
 alt - d : yabai -m space --focus discord
 alt - t : yabai -m space --focus cmux
 alt - s : yabai -m space --focus spotify
 alt - c : yabai -m space --focus code
 alt - a : yabai -m space --focus slack
+alt - i : yabai -m space --focus claude
 
 # spaces — prev/next (alt-arrow stays free for macOS word-jumping in text)
 ctrl + alt - left  : yabai -m space --focus prev
@@ -161,6 +163,7 @@ ctrl + alt + shift - t : yabai -m window --space cmux;    yabai -m space --focus
 ctrl + alt + shift - s : yabai -m window --space spotify; yabai -m space --focus spotify
 ctrl + alt + shift - c : yabai -m window --space code;    yabai -m space --focus code
 ctrl + alt + shift - a : yabai -m window --space slack;   yabai -m space --focus slack
+ctrl + alt + shift - i : yabai -m window --space claude;  yabai -m space --focus claude
 
 # ---------------------------------------------------------------------------
 # space layout — rotate, mirror, bsp ↔ stack
